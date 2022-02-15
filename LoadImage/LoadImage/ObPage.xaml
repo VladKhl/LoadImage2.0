@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pz="clr-namespace:Xamarin.Forms.PinchZoomImage;assembly=Xamarin.Forms.PinchZoomImage"
+             x:Class="LoadImage.ObPage" BackgroundColor="White" Visual="Material">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Entry x:Name="name" BackgroundColor="#E8E8E8" PlaceholderColor="Black" Margin="40, 20, 140, 0" FontSize="15" IsEnabled="False" VerticalTextAlignment="Center"/>
+                <Button x:Name="editname" BackgroundColor="#2F80ED" Text="Изменить название" Margin="230, 20,40,0" FontSize="9" CornerRadius="200" FontAttributes="Bold" Clicked="editname_Clicked"/> 
+            </Grid>
+            <pz:PinchZoom>
+                <Image x:Name="img" Margin="40"/>
+            </pz:PinchZoom>
+            <Button Text="Изменить фото(галерея)" BackgroundColor="#2F80ED" Margin="40,10,40,0"
+            Padding="10,5" CornerRadius="200" x:Name="edit" Clicked="GetPhotoAsync"/>
+            <Button Text="Изменить фото(камера)" BackgroundColor="#2F80ED" Margin="40,10,40,0"
+            Padding="10,5" CornerRadius="200" x:Name="edit_camera" Clicked="TakePhotoAsync"/>
+            <Button Text="Сохранить изменения" BackgroundColor="#2F80ED" Margin="40,10,40,0"
+            Padding="10,5" CornerRadius="200" x:Name="save" IsEnabled="False" Clicked="save_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

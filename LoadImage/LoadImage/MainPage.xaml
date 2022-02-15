@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LoadImage.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    BackgroundColor="White"
+    Visual="Material">
+    <StackLayout>
+        <Entry
+            x:Name="name"
+            Margin="40,40,40,0"
+            BackgroundColor="#E8E8E8"
+            FontSize="15"
+            Placeholder="Введите название"
+            PlaceholderColor="Black" />
+        <StackLayout Margin="40,10" Orientation="Horizontal">
+            <Button
+                x:Name="galer"
+                Padding="10,5"
+                BackgroundColor="#2F80ED"
+                Clicked="GetPhotoAsync"
+                CornerRadius="200"
+                HorizontalOptions="Start"
+                Text="ГАЛЕРЕЯ" />
+            <Button
+                x:Name="camer"
+                Padding="10,5"
+                BackgroundColor="#2F80ED"
+                Clicked="TakePhotoAsync"
+                CornerRadius="200"
+                HorizontalOptions="EndAndExpand"
+                Text="КАМЕРА" />
+        </StackLayout>
+        <Button
+            x:Name="add"
+            Margin="40,10,40,0"
+            Padding="10,5"
+            BackgroundColor="#2F80ED"
+            Clicked="add_Clicked"
+            CornerRadius="200"
+            Text="ДОБАВИТЬ" />
+        <StackLayout Margin="15,20">
+            <ScrollView>
+                <ListView
+                    x:Name="imageList"
+                    HasUnevenRows="True"
+                    IsPullToRefreshEnabled="True"
+                    ItemTapped="imageList_ItemTapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <SwipeView x:Name="swipechoose" BackgroundColor="White">
+                                    <SwipeView.RightItems>
+                                        <SwipeItems>
+                                            <SwipeItem
+                                                x:Name="imageitem"
+                                                BackgroundColor="Red"
+                                                Clicked="imageitem_Clicked"
+                                                CommandParameter="{Binding Id}"
+                                                Text="Удалить" />
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+                                    <StackLayout>
+                                        <ff:CachedImage Source="{Binding Image}" />
+                                        <Label
+                                            FontSize="20"
+                                            Text="{Binding Name}"
+                                            TextColor="Black" />
+                                    </StackLayout>
+                                </SwipeView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
